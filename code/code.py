@@ -37,33 +37,32 @@ def conv(s):
         try:
             return float(s)
         except ValueError:
-            return np.nan 
-	
-def getData():  
-	print "reading data using pandas"  
-	#data = pd.read_table('train.csv', sep=',')  
-	#print data  
-	#print "converting data to numpy array"  
-	#data = np.asarray(data)  
-	#print data  
+            return np.nan
+
+def getData():
+	print "reading data using pandas"
+	#data = pd.read_table('train.csv', sep=',')
+	#print data
+	#print "converting data to numpy array"
+	#data = np.asarray(data)
+	#print data
 	start = time.clock()
 	data = pd.read_csv("/home/alex/Documents/kaggle/loan-default-prediction/data/train/train_v2_1000.csv") #, nrows=1000
 	print 'Total clock time = ' + str(time.clock() - start)
-	
+
 	#data = pd.read_table('train.csv', sep=',')
 
-	return data  
-	
-	
+	return data
+
+
 def convert(data):
 	cols =list(data.columns.values)
-	
+
 	print 'converting objects to integers'
 	for col in cols:
 		if data[col].dtype == 'object':
 			data[col] = data[col].apply(conv)
-			
-	
+
 	print 'done converting'
 
 	return data
@@ -91,13 +90,13 @@ def prepdata3(data, N_train, N_test, cols, ):
 # 		print i
 # 		X_missing = np.hstack((X_missing, np.array(1.0*pd.isnull(data[0:N_train+N_test][cols[i]])).reshape(N_train+N_test,1)))
 
-	
+
 	#data2 = data[:][:].fillna(-1)
- 	imp = Imputer(missing_values='NaN', strategy='mean', axis=0) #strategy='most_frequent' 'mean'
- 	
- 	q = 0 #50000
- 	idx = range(0, N_train+N_test)
- 	#idx = range(0, data.shape[0])
+	imp = Imputer(missing_values='NaN', strategy='mean', axis=0) #strategy='most_frequent' 'mean'
+
+	q = 0 #50000
+	idx = range(0, N_train+N_test)
+	#idx = range(0, data.shape[0])
 	random.shuffle(idx)
 	idx0 = idx[0:N_train]
 	idx2 = idx[N_train:N_train+N_test]
@@ -195,7 +194,6 @@ def glm_clf(X_train, Y_train, X_test, Y_test, cutoff):
 		
 		
 	return scaler, glmf, clf, test_score
-	
 
 
 

@@ -1,0 +1,2 @@
+https://www.kaggle.com/c/loan-default-prediction/data
+https://gist.github.com/jeongyoonlee/9574040#file-select_feature_forward-py

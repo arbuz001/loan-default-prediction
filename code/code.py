@@ -47,7 +47,7 @@ def getData():
 	#data = np.asarray(data)  
 	#print data  
 	start = time.clock()
-	data = pd.read_csv("train_v2.csv") #, nrows=20000
+	data = pd.read_csv("/home/alex/Documents/kaggle/loan-default-prediction/data/train/train_v2_1000.csv") #, nrows=1000
 	print 'Total clock time = ' + str(time.clock() - start)
 	
 	#data = pd.read_table('train.csv', sep=',')
